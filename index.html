@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juego de Memoria</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/juego.css"></head>
+<body>
+<button id="btnSonido" class="btn-sonido" aria-label="Activar o desactivar sonido">🔊</button>
+
+<!-- PANTALLA PRINCIPAL -->
+<main id="inicio" class="pantalla activa">
+  <div class="deco" aria-hidden="true"><span>🍎</span><span>🐶</span><span>📚</span><span>🦋</span><span>💻</span></div>
+  <h1>JUEGO DE MEMORIA</h1>
+  <p class="sub">Encuentra las parejas de palabras e imágenes</p>
+  <p id="actInfo" class="act-info"></p>
+  <section class="panel">
+    <h2>Niveles</h2>
+    <div id="niveles" class="niveles"></div>
+  </section>
+  <div class="acciones">
+    <button id="btnIniciar" class="btn btn-verde">INICIAR JUEGO</button>
+    <a href="configuracion.html" class="btn btn-azul">CONFIGURAR JUEGO</a>
+  </div>
+  <section class="panel instr">
+    <h2>¿Cómo jugar?</h2>
+    <ol><li>Toca una tarjeta para voltearla.</li><li>Toca una segunda tarjeta.</li>
+    <li>Si forman pareja, se quedan descubiertas y ganas 10 puntos.</li>
+    <li>Si no coinciden, se ocultan: ¡recuerda dónde estaban!</li></ol>
+  </section>
+</main>
+
+<!-- CUENTA REGRESIVA -->
+<div id="cuenta" class="pantalla"><div id="cuentaNum">3</div></div>
+
+<!-- TABLERO -->
+<main id="juego" class="pantalla">
+  <header class="hud">
+    <h2 id="juegoTitulo"></h2>
+    <div class="stats">
+      <div class="stat">⏱️<b id="hTiempo">00:00</b><small>Tiempo</small></div>
+      <div class="stat">⭐<b id="hPuntos">0</b><small>Puntaje</small></div>
+      <div class="stat">🧩<b id="hParejas">0 / 0</b><small>Parejas</small></div>
+    </div>
+    <div class="progreso" aria-label="Progreso"><div id="hBarra"></div><span id="hPct">0%</span></div>
+    <button id="btnSalir" class="btn btn-rojo btn-chico">SALIR DEL JUEGO</button>
+  </header>
+  <section id="tablero" class="tablero"></section>
+</main>
+
+<!-- MODAL SALIR -->
+<div id="modalSalir" class="modal" role="dialog" aria-modal="true"><div class="modal-caja">
+  <h2>¿Abandonar la actividad?</h2><p>Si sales, perderás el progreso de esta partida.</p>
+  <div class="acciones"><button id="salirNo" class="btn btn-verde">CONTINUAR JUGANDO</button><button id="salirSi" class="btn btn-rojo">SÍ, SALIR</button></div>
+</div></div>
+
+<!-- MODAL VICTORIA -->
+<div id="modalVictoria" class="modal" role="dialog" aria-modal="true"><div class="modal-caja victoria">
+  <div id="confeti" class="confeti" aria-hidden="true"></div>
+  <svg viewBox="0 0 120 130" class="copa" aria-hidden="true"><path d="M30 10h60v36c0 20-14 34-30 34S30 66 30 46z" fill="#ffc93c" stroke="#e09f00" stroke-width="3"/><path d="M30 18H10c0 24 10 36 24 38M90 18h20c0 24-10 36-24 38" fill="none" stroke="#e09f00" stroke-width="6" stroke-linecap="round"/><rect x="54" y="80" width="12" height="20" fill="#e09f00"/><rect x="34" y="100" width="52" height="14" rx="5" fill="#8a5cf6"/><path d="M60 22l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#fff"/></svg>
+  <h2>¡FELICIDADES, HAS COMPLETADO EL JUEGO!</h2>
+  <p id="mTitulo" class="m-act"></p>
+  <div class="resultados">
+    <div><b id="mPuntos">0</b><small>Puntaje total</small></div>
+    <div><b id="mParejas">0</b><small>Parejas encontradas</small></div>
+    <div><b id="mTiempo">00:00</b><small>Tiempo total</small></div>
+  </div>
+  <p id="mMotivo" class="m-motivo"></p>
+  <div class="acciones"><button id="bJugar" class="btn btn-verde">VOLVER A JUGAR</button><button id="bInicio" class="btn btn-azul">INICIO</button></div>
+</div></div>
+
+<script src="js/almacenamiento.js"></script>
+<script src="js/sonidos.js"></script>
+<script src="js/juego.js"></script>
+<script src="js/main.js"></script>
+</body></html>

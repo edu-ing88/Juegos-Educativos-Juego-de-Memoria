@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Configuración del docente</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/configuracion.css"></head>
+<body class="cfg">
+<div id="msg" class="msg" role="status"></div>
+<main class="cfg-wrap">
+  <h1>Configuración del docente</h1>
+  <section class="panel">
+    <h2>Actividades</h2>
+    <div class="fila">
+      <select id="selAct" aria-label="Actividad"></select>
+      <button id="btnNueva" class="btn btn-azul btn-chico">+ NUEVA</button>
+      <button id="btnElimAct" class="btn btn-rojo btn-chico">ELIMINAR ACTIVIDAD</button>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>Datos de la actividad</h2>
+    <label>Título de la actividad<input id="titulo" maxlength="60" placeholder="Ej.: Vocabulario de los animales"></label>
+    <label>Tipo de emparejamiento<select id="tipo"></select></label>
+    <small id="tipoAyuda"></small>
+  </section>
+  <section class="panel">
+    <h2 id="formTitulo">Agregar pareja</h2>
+    <div class="form-par">
+      <label><span id="lblA">Palabra</span><input id="inpA" maxlength="120" autocomplete="off"></label>
+      <label id="boxFile"><span>Imagen</span><input id="inpFile" type="file" accept="image/*"></label>
+      <label id="boxB" hidden><span id="lblB">Respuesta</span><input id="inpB" maxlength="160" autocomplete="off"></label>
+      <div id="prevBox" class="prev" hidden><img id="prev" alt="Vista previa"></div>
+    </div>
+    <div class="fila">
+      <button id="btnAgregar" class="btn btn-verde btn-chico">AGREGAR</button>
+      <button id="btnCancelar" class="btn btn-gris btn-chico" hidden>CANCELAR</button>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>Parejas registradas (<span id="cont">0</span>)</h2>
+    <ul id="lista" class="lista"></ul>
+  </section>
+  <div class="acciones">
+    <button id="btnGuardar" class="btn btn-verde">GUARDAR</button>
+    <a href="index.html" class="btn btn-azul">VOLVER AL INICIO</a>
+  </div>
+</main>
+<!-- Confirmación para eliminar una pareja -->
+<div id="modalElim" class="modal" role="dialog" aria-modal="true" aria-labelledby="elimTit"><div class="modal-caja">
+  <h2 id="elimTit">¿Eliminar pareja?</h2>
+  <p>¿Estás seguro de que deseas eliminar esta pareja? Esta acción no se puede deshacer.</p>
+  <div class="acciones"><button id="elimNo" class="btn btn-gris">CANCELAR</button><button id="elimSi" class="btn btn-rojo">ELIMINAR</button></div>
+</div></div>
+<script src="js/almacenamiento.js"></script>
+<script src="js/configuracion.js"></script>
+</body></html>

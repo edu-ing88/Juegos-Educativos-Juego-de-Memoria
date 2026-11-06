@@ -1,0 +1,42 @@
+/* Cuenta regresiva, HUD, tablero, tarjetas 3D y modal de victoria */
+#cuenta{justify-content:center;background:rgba(40,20,90,.55)}
+#cuentaNum{font-size:clamp(5rem,26vw,12rem);font-weight:900;color:#fff;text-shadow:0 8px 0 rgba(60,20,140,.6)}
+#cuentaNum.pop{animation:pop .8s ease-out}
+@keyframes pop{0%{transform:scale(.2);opacity:0}50%{transform:scale(1.25);opacity:1}100%{transform:scale(1)}}
+.hud{width:100%;max-width:1000px;background:rgba(255,255,255,.95);border-radius:22px;padding:12px 16px;display:grid;gap:10px;box-shadow:var(--sombra);justify-items:center}
+.hud h2{margin:0;text-align:center}
+.stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.stat{display:grid;grid-template-columns:auto auto;column-gap:8px;align-items:center;background:#f0ebff;border-radius:14px;padding:6px 14px}
+.stat b{font-size:1.3rem}.stat small{grid-column:1/3;text-align:center;color:#6b6490}
+.progreso{width:100%;height:20px;background:#e7e1f8;border-radius:12px;position:relative;overflow:hidden}
+#hBarra{height:100%;width:0;background:linear-gradient(90deg,#25b06b,#7be495);transition:width .5s}
+#hPct{position:absolute;inset:0;display:grid;place-items:center;font-size:.8rem;font-weight:800}
+.tablero{--cols:5;display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:clamp(8px,1.6vw,16px);width:100%;max-width:var(--maxw,1000px)}
+.carta{all:unset;display:block;aspect-ratio:3/4;perspective:900px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.carta:focus-visible{outline:4px solid #ffd23f;border-radius:16px}
+.interior{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s}
+.carta.volteada .interior{transform:rotateY(180deg)}
+.cara{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;box-shadow:0 6px 14px rgba(40,20,90,.25);overflow:hidden;padding:6px}
+.dorso{background:repeating-linear-gradient(45deg,#7b5cf0 0 12px,#8d72f5 12px 24px);border:4px solid #fff;font-size:clamp(1.5rem,5vw,2.8rem);color:#fff}
+.frente{transform:rotateY(180deg);background:#fff;border:4px solid #fff}
+.frente.tipo-a{background:#dff1ff}
+.frente img{width:100%;height:100%;object-fit:contain}
+.frente span{font-weight:900;font-size:clamp(.8rem,2.6vw,1.6rem);text-align:center;word-break:break-word;color:#23446b}
+.frente span.largo{font-size:clamp(.6rem,1.7vw,1rem);font-weight:700}
+.carta.error .frente{background:#ffe3ea;animation:tiembla .4s}
+.carta.acertada{cursor:default}
+.carta.acertada .frente{background:#d8f8e6;border-color:var(--verde);box-shadow:0 0 0 4px rgba(37,176,107,.35),0 6px 14px rgba(40,20,90,.25)}
+.carta.acertada .interior{animation:salto .6s}
+@keyframes tiembla{25%{translate:-6px}75%{translate:6px}}
+@keyframes salto{40%{transform:rotateY(180deg) scale(1.12)}}
+@media(max-width:600px){.tablero{grid-template-columns:repeat(var(--colsm,4),1fr);max-width:var(--maxwm,100%)}.stat{padding:4px 10px}}
+.victoria{overflow:hidden}
+.copa{width:130px;animation:copa 1.6s ease-in-out infinite;filter:drop-shadow(0 8px 10px rgba(224,159,0,.45))}
+@keyframes copa{50%{transform:translateY(-8px) rotate(4deg)}}
+.victoria h2{color:var(--p);font-size:1.4rem}.m-act{font-weight:800}
+.resultados{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.resultados div{background:#f0ebff;border-radius:14px;padding:10px 4px;display:grid}.resultados b{font-size:1.5rem}.resultados small{font-size:.75rem;color:#6b6490}
+.m-motivo{font-weight:700;color:#25805a}
+.confeti{position:absolute;inset:0;pointer-events:none}
+.confeti i{position:absolute;top:-14px;width:10px;height:16px;animation:cae linear infinite}
+@keyframes cae{to{transform:translateY(110vh) rotate(720deg)}}
